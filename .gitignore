@@ -1,2 +1,12 @@
 __pycache__/
 *.pyc
+*.db
+*.sqlite3
+venv/
+.env
+.env.*
+*.key
+*.pem
+secrets/
+.openclaw/
+memory/

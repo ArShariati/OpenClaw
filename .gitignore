@@ -10,3 +10,6 @@ venv/
 secrets/
 .openclaw/
 memory/
+
+# Generated media
+tmp/

@@ -3,7 +3,7 @@ set -euo pipefail
 
 IN="$1"
 MODEL_DIR="$HOME/.cache/whisper"
-MODEL="medium"
+MODEL="${WHISPER_MODEL:-small}"
 
 OUT_DIR="${2:-/tmp}"
 mkdir -p "$OUT_DIR"
@@ -12,7 +12,6 @@ mkdir -p "$OUT_DIR"
 
 TXT="$OUT_DIR/$(basename "$IN" .ogg).txt"
 if [ ! -f "$TXT" ]; then
-  # Whisper may output .wav filename depending on input; fall back to newest txt
   TXT=$(ls -t "$OUT_DIR"/*.txt | head -n1)
 fi
 cat "$TXT"

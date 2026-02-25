@@ -34,9 +34,9 @@ Things like:
 ### Whisper (local)
 
 - CLI: `~/.local/bin/whisper`
-- Model: `medium` (stored at `~/.cache/whisper/medium.pt`)
-- Use: `whisper <file> --model medium --model_dir ~/.cache/whisper`
-- Pipeline: `scripts/whisper_transcribe.sh <file>` (no trimming; medium model)
+- Models: `small` (default) + `medium` (for high accuracy)
+- Use: `whisper <file> --model <small|medium> --model_dir ~/.cache/whisper`
+- Pipeline: `scripts/whisper_transcribe.sh <file>` (default small; set `WHISPER_MODEL=medium` for high accuracy)
 
 ## Why Separate?
 

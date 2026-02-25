@@ -36,7 +36,7 @@ Things like:
 - CLI: `~/.local/bin/whisper`
 - Model: `medium` (stored at `~/.cache/whisper/medium.pt`)
 - Use: `whisper <file> --model medium --model_dir ~/.cache/whisper`
-- Silence-trim pipeline: `scripts/whisper_transcribe.sh <file>` (uses ffmpeg + medium model)
+- Pipeline: `scripts/whisper_transcribe.sh <file>` (no trimming; medium model)
 
 ## Why Separate?
 

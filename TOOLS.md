@@ -35,7 +35,7 @@ Things like:
 
 - Use OpenAI Whisper API (openai-whisper-api skill) for voice transcription.
 - Script: `scripts/whisper_api_transcribe.sh <audio-file>` (reads key from openclaw.json).
-- Local Whisper no longer used.
+- Local Whisper removed; API only.
 
 ## Why Separate?
 

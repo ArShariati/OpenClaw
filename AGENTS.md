@@ -207,6 +207,22 @@ Think of it like a human reviewing their journal and updating their mental model
 
 The goal: Be helpful without being annoying. Check in a few times a day, do useful background work, but respect quiet time.
 
+## Git — Auto-Commit & Push
+
+This workspace is tracked in git: `git@github.com:ArShariati/OpenClaw.git`
+
+**Rule: after every session where you create or modify any file in this workspace, commit and push.**
+
+```bash
+git -C /home/alireza/.openclaw/workspace add -A
+git -C /home/alireza/.openclaw/workspace commit -m "brief description of what changed"
+git -C /home/alireza/.openclaw/workspace push
+```
+
+- Commit message should describe what you did (e.g. "add RAG ingest handler", "update SOUL.md")
+- Don't commit: DB files, venv, .env, memory/ logs, secrets (all covered by .gitignore)
+- If push fails, check with `git status` and resolve before ending session
+
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.

@@ -31,12 +31,10 @@ Things like:
 - Default speaker: Kitchen HomePod
 ```
 
-### Whisper (local)
+### Whisper (API)
 
-- CLI: `~/.local/bin/whisper`
-- Models: `small` (default) + `medium` (for high accuracy)
-- Use: `whisper <file> --model <small|medium> --model_dir ~/.cache/whisper`
-- Pipeline: `scripts/whisper_transcribe.sh <file>` (default small; set `WHISPER_MODEL=medium` for high accuracy)
+- Use OpenAI Whisper API (openai-whisper-api skill) for voice transcription.
+- Local Whisper no longer used.
 
 ## Why Separate?
 

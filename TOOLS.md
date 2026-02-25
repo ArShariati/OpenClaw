@@ -31,6 +31,12 @@ Things like:
 - Default speaker: Kitchen HomePod
 ```
 
+### Whisper (local)
+
+- CLI: `~/.local/bin/whisper`
+- Model: `medium` (stored at `~/.cache/whisper/medium.pt`)
+- Use: `whisper <file> --model medium --model_dir ~/.cache/whisper`
+
 ## Why Separate?
 
 Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.

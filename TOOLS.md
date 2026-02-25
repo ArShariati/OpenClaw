@@ -37,6 +37,13 @@ Things like:
 - Script: `scripts/whisper_api_transcribe.sh <audio-file>` (reads key from openclaw.json).
 - Local Whisper removed; API only.
 
+### Voice calls (Telnyx)
+
+- Provider: Telnyx
+- From number: +31 970 102 84966 (pending approval)
+- Webhook: https://debian-oc.taild78267.ts.net/voice/webhook (Tailscale Funnel; signatures verified)
+- Config: ~/.openclaw/openclaw.json → plugins.entries.voice-call
+
 ## Why Separate?
 
 Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.

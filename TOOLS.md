@@ -44,6 +44,14 @@ Things like:
 - Webhook: https://debian-oc.taild78267.ts.net/voice/webhook (Tailscale Funnel; signatures verified)
 - Config: ~/.openclaw/openclaw.json → plugins.entries.voice-call
 
+### X/Twitter (Twikit)
+
+- Cookies: `~/.openclaw/rag/x_cookies.json`
+- Helper: `~/workspace/skills/twikit/twikit_client.py`
+- Use for: read tweet by ID, replies, post, search, user timeline
+- Articles: use browser tool (Twikit can’t fetch full article body)
+- Cookies expire every few weeks; ask user to refresh via Cookie-Editor
+
 ## Why Separate?
 
 Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.

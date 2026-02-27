@@ -208,19 +208,27 @@ def fetch_youtube(url: str) -> str:
 
 
 def fetch_x(url: str) -> str:
-    # Prefer twikit if configured
+    # Prefer twikit with cookies if configured
     if TwikitClient is not None:
+        cookies_path = "/home/alireza/.openclaw/rag/x_cookies.json"
         cfg_path = os.path.join(DATA_DIR, "x_config.json")
-        if os.path.exists(cfg_path):
-            with open(cfg_path, "r", encoding="utf-8") as f:
-                cfg = json.load(f)
+        if os.path.exists(cookies_path) or os.path.exists(cfg_path):
 
             async def _get():
                 client = TwikitClient('en-US')
-                if "cookies" in cfg:
-                    await client.set_cookies(cfg["cookies"])
-                elif "username" in cfg and "password" in cfg:
-                    await client.login(auth_info_1=cfg["username"], auth_info_2=cfg.get("email"), password=cfg["password"], totp_secret=cfg.get("totp"))
+                if os.path.exists(cookies_path):
+                    with open(cookies_path, "r", encoding="utf-8") as f:
+                        cookies = json.load(f)
+                    if isinstance(cookies, list):
+                        cookies = {c.get("name"): c.get("value") for c in cookies if c.get("name")}
+                    await client.set_cookies(cookies)
+                elif os.path.exists(cfg_path):
+                    with open(cfg_path, "r", encoding="utf-8") as f:
+                        cfg = json.load(f)
+                    if "cookies" in cfg:
+                        await client.set_cookies(cfg["cookies"])
+                    elif "username" in cfg and "password" in cfg:
+                        await client.login(auth_info_1=cfg["username"], auth_info_2=cfg.get("email"), password=cfg["password"], totp_secret=cfg.get("totp"))
 
                 tweet_id = re.sub(r".*/status/", "", url).split("?")[0]
                 t = await client.get_tweet_by_id(tweet_id)

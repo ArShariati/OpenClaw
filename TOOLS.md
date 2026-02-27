@@ -43,6 +43,10 @@ Things like:
 - From number: +31 970 102 84966 (pending approval)
 - Webhook: https://debian-oc.taild78267.ts.net/voice/webhook (Tailscale Funnel; signatures verified)
 - Config: ~/.openclaw/openclaw.json → plugins.entries.voice-call
+- TTS: OpenAI gpt-4o-mini-tts, default voice **coral** (voices: alloy, ash, ballad, coral, echo, fable, nova, onyx, sage, shimmer, verse, marin, cedar)
+- TTS fallback: Telnyx native
+- STT: OpenAI Whisper (whisper-1)
+- Per-call override: can switch to Telnyx native or change OpenAI voice
 
 ### X/Twitter (Twikit)
 

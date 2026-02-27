@@ -25,13 +25,24 @@ import os
 cfg_path = "/home/alireza/.openclaw/rag/x_config.json"
 
 async def try_twikit(url: str):
-    if TwikitClient is None or not os.path.exists(cfg_path):
+    if TwikitClient is None or (not os.path.exists(cfg_path) and not os.path.exists("/home/alireza/.openclaw/rag/x_cookies.json")):
         return None
-    with open(cfg_path, "r", encoding="utf-8") as f:
-        cfg = json.load(f)
+    cfg = {}
+    if os.path.exists(cfg_path):
+        with open(cfg_path, "r", encoding="utf-8") as f:
+            cfg = json.load(f)
     client = TwikitClient('en-US')
-    if "cookies" in cfg:
-        await client.set_cookies(cfg["cookies"])
+    cookies_path = "/home/alireza/.openclaw/rag/x_cookies.json"
+    if os.path.exists(cookies_path):
+        cookies = json.load(open(cookies_path))
+        if isinstance(cookies, list):
+            cookies = {c.get("name"): c.get("value") for c in cookies if c.get("name")}
+        await client.set_cookies(cookies)
+    elif "cookies" in cfg:
+        cookies = cfg["cookies"]
+        if isinstance(cookies, list):
+            cookies = {c.get("name"): c.get("value") for c in cookies if c.get("name")}
+        await client.set_cookies(cookies)
     elif "username" in cfg and "password" in cfg:
         await client.login(auth_info_1=cfg["username"], auth_info_2=cfg.get("email"), password=cfg["password"], totp_secret=cfg.get("totp"))
     tweet_id = extract_tweet_id(url)
